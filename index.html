@@ -1,0 +1,1742 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IRC FSD Library Presentation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Kufi+Arabic:wght@100..900&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Nastaliq+Urdu:wght@400..700&family=Reem+Kufi:wght@400..700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(-45deg, #1a2630, #2b3e4c, #49677d, #354f60);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+
+        50% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 95%;
+        max-width: 1400px;
+        height: 80vh;
+        min-height: 500px;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .carousel-track {
+        display: flex;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .slide {
+        min-width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px;
+        box-sizing: border-box;
+        background: linear-gradient(135deg, #edfbff 0%, #d5eef5 100%);
+        color: #49677d;
+        text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .slide h1 {
+        font-size: 3rem;
+        margin: 0 0 15px 0;
+        font-weight: 800;
+      }
+
+      .slide p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        line-height: 1.6;
+        margin: 0 0 30px 0;
+        font-weight: 300;
+      }
+
+      .header-arabic {
+        font-family: "Amiri Quran", serif;
+        font-size: 1.8rem;
+        margin-bottom: auto;
+        padding-top: 10px;
+        line-height: 2;
+        direction: rtl;
+      }
+
+      .slide-content {
+        margin-bottom: auto;
+      }
+
+      .slide-footer {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: auto;
+        opacity: 0.9;
+      }
+
+      .urdu-slide {
+        direction: rtl;
+      }
+
+      .urdu-title {
+        font-family: "Noto Nastaliq Urdu", serif !important;
+        font-size: 2.2rem !important;
+        margin-bottom: 20px !important;
+        font-weight: 700;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        direction: rtl;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 16px;
+        padding: 20px 15px;
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        color: #49677d;
+        box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+        text-shadow: none;
+      }
+
+      .feature-icon {
+        background: linear-gradient(135deg, #49677d, #2b3e4c);
+        color: #fff;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+      }
+
+      .feature-card:hover .feature-icon {
+        transform: scale(1.1) rotate(10deg);
+      }
+
+      .visit-btn {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #ff416c;
+        background: #ffffff;
+        text-decoration: none;
+        border-radius: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .visit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        background: #f8f8f8;
+      }
+
+      /* Controls Container (Outside Carousel) */
+      .controls-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        z-index: 10;
+      }
+
+      /* Navigation Buttons */
+      .nav-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-btn:hover {
+        background: white;
+        color: #333;
+        transform: scale(1.1);
+      }
+
+      /* Indicators / Dots */
+      .dots-container {
+        display: flex;
+        gap: 12px;
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: white;
+        transform: scale(1.3);
+      }
+
+      /* Slide 3 Circle Pie Chart */
+      .cycle-diagram-pie {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 20px auto 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cycle-text-node {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-110px)
+          rotate(calc(-1 * var(--angle)));
+        color: white;
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.5rem;
+        z-index: 10;
+        direction: rtl;
+        pointer-events: none;
+        white-space: nowrap;
+        text-shadow: none !important;
+      }
+
+      .animated-arrows {
+        transform-origin: 100px 100px;
+        animation: spin-arrows 20s linear infinite;
+      }
+
+      @keyframes spin-arrows {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Slide 4 Horizontal Stepper */
+      .stepper-horizontal {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1050px;
+        margin: 0 auto;
+        direction: rtl;
+        position: relative;
+      }
+
+      .stepper-horizontal::before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        /* Aligns with middle of the 60px circle */
+        left: 10%;
+        right: 10%;
+        height: 3px;
+        background: rgba(74, 106, 208, 0.15);
+        z-index: 0;
+      }
+
+      .stepper-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .step-circle {
+        width: 60px;
+        height: 60px;
+        background: #ffffff;
+        color: #5a75cf;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(90, 117, 207, 0.15);
+        margin-bottom: 25px;
+        border: 2px solid #5a75cf;
+        transition: all 0.3s ease;
+      }
+
+      .stepper-item:hover .step-circle {
+        background: #5a75cf;
+        color: #ffffff;
+        transform: scale(1.1);
+        box-shadow: 0 10px 25px rgba(90, 117, 207, 0.3);
+      }
+
+      .step-title {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #ff416c;
+        margin-bottom: 10px;
+        text-shadow: none;
+      }
+
+      .step-desc {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.15rem;
+        color: #4a5c6b;
+        line-height: 1.8;
+        padding: 0 10px;
+        text-shadow: none;
+      }
+
+      /* Slide 5 Search Grid Options */
+      .search-options-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 15px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        direction: rtl;
+      }
+
+      .search-grid-item {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        padding: 25px 15px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .search-grid-item:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+      }
+
+      .opt-grid-icon {
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, #49677d, #2b3e4c);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .search-grid-item:hover .opt-grid-icon {
+        transform: scale(1.1);
+      }
+
+      .opt-grid-text {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.1rem;
+        color: #49677d;
+        line-height: 1.8;
+      }
+
+      /* Slide 6 Dashboard Grid */
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+        direction: rtl;
+      }
+
+      .dash-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        padding: 12px 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .dash-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 25px rgba(73, 103, 125, 0.12);
+      }
+
+      .dash-cat {
+        font-family: "Poppins", sans-serif;
+        font-size: 0.65rem;
+        background: #49677d;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-bottom: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .dash-icon {
+        background: linear-gradient(135deg, #49677d, #2b3e4c);
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.1rem;
+        box-shadow: 0 3px 10px rgba(73, 103, 125, 0.2);
+      }
+
+      .dash-title {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #2b3e4c;
+        margin: 2px 0;
+      }
+
+      .dash-desc {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 0.8rem;
+        color: #49677d;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 1000px) {
+        .dashboard-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Slide 7 Security Grid */
+      .security-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 10px;
+        direction: rtl;
+      }
+
+      .sec-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 10px 8px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+      }
+
+      .sec-card:hover {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+      }
+
+      .sec-icon {
+        background: linear-gradient(135deg, #49677d, #2b3e4c);
+        color: #fff;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .sec-card:hover .sec-icon {
+        transform: rotate(360deg);
+      }
+
+      .sec-title {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #2b3e4c;
+      }
+
+      .sec-desc {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 0.75rem;
+        color: #49677d;
+        line-height: 1.3;
+      }
+
+      @media (max-width: 900px) {
+        .security-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Slide 8 Cost Professional Redesign */
+      .cost-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        direction: rtl;
+      }
+
+      .cost-row {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        padding: 15px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      }
+
+      .cost-row:hover {
+        transform: scale(1.02);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 25px rgba(73, 103, 125, 0.1);
+      }
+
+      .cost-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .cost-label {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.3rem;
+        color: #2b3e4c;
+        font-weight: 700;
+      }
+
+      .cost-value-tag {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.2rem;
+        padding: 5px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .tag-free {
+        background: rgba(46, 125, 50, 0.1);
+        color: #2e7d32;
+        border: 1px solid rgba(46, 125, 50, 0.2);
+      }
+
+      .tag-paid {
+        background: rgba(211, 47, 47, 0.1);
+        color: #d32f2f;
+        border: 1px solid rgba(211, 47, 47, 0.2);
+      }
+
+      /* Slide 9 Database Capacity Grid */
+      .capacity-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        direction: rtl;
+      }
+
+      .metric-card {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        padding: 30px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 8px 25px rgba(73, 103, 125, 0.05);
+      }
+
+      .metric-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 15px 35px rgba(73, 103, 125, 0.12);
+      }
+
+      .metric-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #49677d, #2b3e4c);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.22rem;
+        box-shadow: 0 5px 15px rgba(73, 103, 125, 0.2);
+      }
+
+      .metric-value {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #2b3e4c;
+      }
+
+      .metric-label {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.15rem;
+        color: #49677d;
+        font-weight: 700;
+      }
+
+      @media (max-width: 800px) {
+        .capacity-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Slide 10 Roadmap Features */
+      .roadmap-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        direction: rtl;
+      }
+
+      .roadmap-card {
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 16px;
+        padding: 40px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+      }
+
+      .roadmap-card::after {
+        content: "COMING SOON";
+        position: absolute;
+        top: 15px;
+        right: -35px;
+        background: #ff416c;
+        color: white;
+        font-size: 0.6rem;
+        font-family: "Poppins", sans-serif;
+        padding: 4px 40px;
+        transform: rotate(45deg);
+        font-weight: 700;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .roadmap-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        background: rgba(255, 255, 255, 0.7);
+        border-color: #ff416c;
+      }
+
+      .roadmap-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+      }
+
+      .roadmap-title {
+        font-family: "Noto Nastaliq Urdu", serif;
+        font-size: 1.25rem;
+        color: #2b3e4c;
+        font-weight: 700;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .roadmap-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Slide 11 Re-Design: Split Card Layout */
+      .thank-you-card {
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 24px;
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        max-width: 1000px;
+        margin: 0 auto;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 25px 50px rgba(73, 103, 125, 0.15);
+        direction: rtl;
+      }
+
+      .id-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .text-section {
+        flex: 1.5;
+        text-align: right;
+        border-right: 2px solid rgba(73, 103, 125, 0.1);
+        padding-right: 50px;
+      }
+
+      .profile-img-new {
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        border: 4px solid white;
+        object-fit: cover;
+        object-position: top;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transform: rotate(-2deg);
+        transition: all 0.5s ease;
+      }
+
+      .thank-you-card:hover .profile-img-new {
+        transform: rotate(0deg) scale(1.05);
+      }
+
+      .thanks-en {
+        font-family: "Poppins", sans-serif;
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: #2b3e4c;
+        margin-bottom: 0px;
+        line-height: 1;
+        letter-spacing: -2px;
+        background: linear-gradient(135deg, #2b3e4c, #49677d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .qa-en {
+        font-family: "Poppins", sans-serif;
+        font-size: 2rem;
+        color: #49677d;
+        margin-bottom: 30px;
+        font-weight: 500;
+        opacity: 0.8;
+      }
+
+      .author-info-new {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .author-name-new {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #2b3e4c;
+        line-height: 1;
+      }
+
+      .author-title-new {
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        color: #49677d;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+
+      .contact-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        justify-content: flex-start;
+      }
+
+      .contact-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(73, 103, 125, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2b3e4c;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .contact-btn:hover {
+        background: #2b3e4c;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 900px) {
+        .thank-you-card {
+          flex-direction: column;
+          padding: 30px;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .text-section {
+          border-right: none;
+          padding-right: 0;
+          text-align: center;
+        }
+
+        .contact-icons {
+          justify-content: center;
+        }
+      }
+
+      #slideCounter {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        font-family: "Poppins", sanss-serif;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: rgba(67, 103, 129, 0.4);
+        letter-spacing: 2px;
+        z-index: 200;
+        pointer-events: none;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 4px 15px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* Dynamic Progress Bar */
+      .progress-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #dfe9f3 0%, #ffffff 100%);
+        z-index: 2000;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      #progressBar {
+        height: 100%;
+        width: 9.09%;
+        background: linear-gradient(90deg, #2b3e4c, #49677d, #2b3e4c);
+        background-size: 200% auto;
+        animation: shine 4s linear infinite;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 15px rgba(43, 62, 76, 0.3);
+      }
+
+      @keyframes shine {
+        to {
+          background-position: 200% center;
+        }
+      }
+
+      /* Shake Animation for Boundary */
+      @keyframes slideShake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+
+        25% {
+          transform: translateX(-10px);
+        }
+
+        50% {
+          transform: translateX(10px);
+        }
+
+        75% {
+          transform: translateX(-10px);
+        }
+      }
+
+      .shake-limit {
+        animation: slideShake 0.4s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="track">
+          <!-- Slide 1 -->
+          <div class="slide">
+            <div class="header-arabic">
+              الحمدللہ رب العالمین والصلوٰۃ والسلام علی سید الانبیاء والمرسلین
+              اما بعد فاعوذ باللہ من الشیطان الرجیم
+              <div>بسم اللہ الرحمن الرحیم</div>
+            </div>
+            <div class="slide-content">
+              <h1>Welcome to IRC FSD Library</h1>
+              <p>Prepared by Muhammad Umar</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slide urdu-slide">
+            <h1 class="urdu-title">ویبسائٹ کے فیچرز</h1>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <span>کتابوں کی فوری اور آسان تلاش</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-id-card"></i>
+                </div>
+                <span>مصنف اور مکتبہ کی تفصیلی معلومات</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+                <span>کتابوں کے سرورق کی دستیابی</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-handshake"></i>
+                </div>
+                <span>محفوظ اور آسان کتاب مستعار لینے کی سہولت</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-cloud-arrow-down"></i>
+                </div>
+                <span>آن لائن کتب کی مفت ڈاؤن لوڈنگ</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+                <span>نئی کتب کی فوری اپ ڈیٹس</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <span>کتب اور مصنفین کے تفصیلی اعداد و شمار</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-globe"></i>
+                </div>
+                <span>کسی بھی جگہ سے فوری رسائی</span>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-laptop"></i>
+                </div>
+                <span>تمام ڈیوائسز پر باآسانی قابلِ استعمال</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="
+                margin-bottom: 30px;
+                font-size: 2rem !important;
+                line-height: 1.5;
+              "
+            >
+              اس ویبسائٹ کا بنیادی مقصد کتابوں کو ٹریک کرنا ہے
+            </h1>
+
+            <div class="cycle-diagram-pie">
+              <svg viewBox="0 0 200 200" width="100%" height="100%">
+                <defs>
+                  <g id="curve-arrow">
+                    <path
+                      d="M 104.5 14.1 A 86 86 0 0 1 178.5 65.0"
+                      stroke="#a0abaf"
+                      stroke-width="6"
+                      fill="none"
+                    />
+                    <polygon
+                      points="182.6,76.3 173.1,67.5 184.0,62.6"
+                      fill="#a0abaf"
+                    />
+                  </g>
+                </defs>
+
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="40"
+                  stroke="#325264"
+                  stroke-width="80"
+                  fill="none"
+                  pathLength="100"
+                  stroke-dasharray="19.2 0.8"
+                  stroke-dashoffset="0.4"
+                  transform="rotate(-90 100 100)"
+                />
+
+                <g class="animated-arrows">
+                  <use href="#curve-arrow" />
+                  <use href="#curve-arrow" transform="rotate(72 100 100)" />
+                  <use href="#curve-arrow" transform="rotate(144 100 100)" />
+                  <use href="#curve-arrow" transform="rotate(216 100 100)" />
+                  <use href="#curve-arrow" transform="rotate(288 100 100)" />
+                </g>
+              </svg>
+
+              <div class="cycle-text-node" style="--angle: 36deg">
+                <span>لائبریری</span>
+              </div>
+              <div class="cycle-text-node" style="--angle: 108deg">
+                <span>غلام عباس</span>
+              </div>
+              <div class="cycle-text-node" style="--angle: 180deg">
+                <span>غلام محی الدین</span>
+              </div>
+              <div class="cycle-text-node" style="--angle: 252deg">
+                <span>عبد الرؤف</span>
+              </div>
+              <div class="cycle-text-node" style="--angle: 324deg">
+                <span>محمد عمر</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 60px; font-size: 2.5rem !important"
+            >
+              ویب سائٹ میں داخل ہونے کا طریقہ
+            </h1>
+
+            <div class="stepper-horizontal">
+              <div class="stepper-item">
+                <div class="step-circle">1</div>
+                <div class="step-title">درخواست بھیجیں</div>
+                <div class="step-desc">
+                  لائبریرین کو فعال ای میل کے ذریعے رجسٹریشن کی درخواست دیجیے۔
+                </div>
+              </div>
+
+              <div class="stepper-item">
+                <div class="step-circle">2</div>
+                <div class="step-title">منظوری کا انتظار</div>
+                <div class="step-desc">
+                  لائبریرین درخواست کا جائزہ لے کر اسے منظور کرے گا۔
+                </div>
+              </div>
+
+              <div class="stepper-item">
+                <div class="step-circle">3</div>
+                <div class="step-title">مکمل رسائی</div>
+                <div class="step-desc">
+                  منظوری ملتے ہی آپ لائبریری کو مکمل طور پر استعمال کر سکتے ہیں۔
+                </div>
+              </div>
+
+              <div class="stepper-item">
+                <div class="step-circle">4</div>
+                <div class="step-title">آسان لاگ ان</div>
+                <div class="step-desc">
+                  اگلی بار کے لئے صرف اپنا ای میل اور پاسورڈ درج کرنا ہوگا۔
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 5px; font-size: 2.5rem !important"
+            >
+              کتاب تلاش کرنے کے طریقے
+            </h1>
+            <p
+              style="
+                font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+                font-size: 1.4rem;
+                color: #4a5c6b;
+                margin-bottom: 40px;
+              "
+            >
+              مختلف تلاش کے اختیارات
+            </p>
+
+            <div class="search-options-grid">
+              <div class="search-grid-item">
+                <div class="opt-grid-icon">
+                  <i class="fa-solid fa-user-tag"></i>
+                </div>
+                <div class="opt-grid-text">موضوع اور مصنف کے نام کے ساتھ</div>
+              </div>
+              <div class="search-grid-item">
+                <div class="opt-grid-icon">
+                  <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="opt-grid-text">موضوع کے انتخاب کے ساتھ</div>
+              </div>
+              <div class="search-grid-item">
+                <div class="opt-grid-icon">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div class="opt-grid-text">کتاب کے عنوان کے ساتھ</div>
+              </div>
+              <div class="search-grid-item">
+                <div class="opt-grid-icon">
+                  <i class="fa-solid fa-bookmark"></i>
+                </div>
+                <div class="opt-grid-text">موضوع اور کتاب کے عنوان کے ساتھ</div>
+              </div>
+              <div class="search-grid-item">
+                <div class="opt-grid-icon">
+                  <i class="fa-solid fa-user-pen"></i>
+                </div>
+                <div class="opt-grid-text">مصنف کے نام کے ساتھ</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="
+                margin-bottom: 5px;
+                font-size: 2rem !important;
+                line-height: 1.5;
+              "
+            >
+              لائبریرین ڈیش بورڈ — اہم خصوصیات
+            </h1>
+            <p
+              style="
+                font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+                font-size: 1.2rem;
+                color: #4a5c6b;
+                margin-bottom: 25px;
+              "
+            >
+              لائبریرین کے اختیارات
+            </p>
+
+            <div class="dashboard-grid">
+              <!-- Book Management Group -->
+              <div class="dash-card">
+                <span class="dash-cat">Book Mgmt</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-book-medical"></i>
+                </div>
+                <div class="dash-title">کتابیں شامل کریں</div>
+                <div class="dash-desc">
+                  نئی کتابوں کو سسٹم میں شامل کرنے کی سہولت
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Book Mgmt</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-book-quran"></i>
+                </div>
+                <div class="dash-title">کتاب ایڈٹ کریں</div>
+                <div class="dash-desc">
+                  کتاب کی معلومات میں ترمیم کرنے کی سہولت
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Book Mgmt</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <div class="dash-title">کتاب حذف کریں</div>
+                <div class="dash-desc">
+                  غیر ضروری کتب کو سسٹم سے ہٹانے کی سہولت
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Tracking</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div class="dash-title">لاگ ریکارڈز</div>
+                <div class="dash-desc">
+                  تاریخ و وقت کے ساتھ سرگرمیوں کا مکمل ریکارڈ
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Users</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-user-check"></i>
+                </div>
+                <div class="dash-title">ممبر شپ مینجمنٹ</div>
+                <div class="dash-desc">
+                  نئے ممبران کی درخواستوں کی منظوری اور انتظام
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Inventory</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-rectangle-list"></i>
+                </div>
+                <div class="dash-title">جاری کتب کی فہرست</div>
+                <div class="dash-desc">
+                  ممبرز کے نام کے ساتھ جاری کتب کی نگرانی
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <span class="dash-cat">Search</span>
+                <div class="dash-icon">
+                  <i class="fa-solid fa-magnifying-glass-chart"></i>
+                </div>
+                <div class="dash-title">ایڈوانس سرچ</div>
+                <div class="dash-desc">
+                  مختلف معیار کے ذریعے کتب کی فوری تلاش
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7 Security -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 5px; font-size: 1.8rem !important"
+            >
+              🔐 سیکیورٹی اور ڈیٹا تحفظ
+            </h1>
+            <p
+              style="
+                font-family: &quot;Noto Nastaliq Urdu&quot;, serif;
+                font-size: 1rem;
+                color: #4a5c6b;
+                margin-bottom: 15px;
+              "
+            >
+              ویب سائٹ کی سیکیورٹی اور صارفین کے ڈیٹا کی حفاظت
+            </p>
+
+            <div class="security-grid">
+              <div class="sec-card">
+                <div class="sec-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="sec-title">محفوظ انفراسٹرکچر</div>
+                <div class="sec-desc">جدید معیارات اور HTTPS کا استعمال</div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon"><i class="fa-brands fa-google"></i></div>
+                <div class="sec-title">Google Auth</div>
+                <div class="sec-desc">شناخت کی محفوظ اور تیز تصدیق</div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon">
+                  <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="sec-title">Unauthorized Access</div>
+                <div class="sec-desc">غیر مجاز رسائی کی مکمل روک تھام</div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon">
+                  <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div class="sec-title">ڈیٹا پروٹیکشن</div>
+                <div class="sec-desc">
+                  صارفین کا ڈیٹا مکمل طور پر خفیہ اور محفوظ
+                </div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon"><i class="fa-solid fa-fire"></i></div>
+                <div class="sec-title">Firebase Auth</div>
+                <div class="sec-desc">
+                  Email اور Google کے ذریعے محفوظ لاگ ان
+                </div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon">
+                  <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <div class="sec-title">Firestore Rules</div>
+                <div class="sec-desc">Role-based رسائی کنٹرول (Admin/User)</div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon"><i class="fa-solid fa-database"></i></div>
+                <div class="sec-title">ڈیٹا بیس پروٹیکشن</div>
+                <div class="sec-desc">
+                  Read/Write پرمیشن رولز کے ذریعے کنٹرول
+                </div>
+              </div>
+              <div class="sec-card">
+                <div class="sec-icon"><i class="fa-brands fa-react"></i></div>
+                <div class="sec-title">React Security</div>
+                <div class="sec-desc">XSS سے بچاؤ اور محفوظ اسٹیٹ مینجمنٹ</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 8 Costs -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 40px; font-size: 2.22rem !important"
+            >
+              اخراجات کی تفصیل
+            </h1>
+
+            <div class="cost-list">
+              <div class="cost-row">
+                <div class="cost-info">
+                  <div class="dash-icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                  </div>
+                  <div class="cost-label">ریسرچ اور ڈویلپمنٹ کاسٹ</div>
+                </div>
+                <div class="cost-value-tag tag-free">فری (مفت)</div>
+              </div>
+
+              <div class="cost-row">
+                <div class="cost-info">
+                  <div class="dash-icon"><i class="fa-solid fa-cloud"></i></div>
+                  <div class="cost-label">ہوسٹنگ</div>
+                </div>
+                <div class="cost-value-tag tag-free">فری (مفت)</div>
+              </div>
+
+              <div class="cost-row">
+                <div class="cost-info">
+                  <div class="dash-icon">
+                    <i class="fa-solid fa-server"></i>
+                  </div>
+                  <div class="cost-label">ڈیٹا بیس مخصوص مقدار کاسٹ</div>
+                </div>
+                <div class="cost-value-tag tag-free">فری (مفت)</div>
+              </div>
+
+              <div class="cost-row">
+                <div class="cost-info">
+                  <div class="dash-icon">
+                    <i class="fa-solid fa-images"></i>
+                  </div>
+                  <div class="cost-label">تصاویر اسٹوریج</div>
+                </div>
+                <div class="cost-value-tag tag-free">25 جی بی فری</div>
+              </div>
+
+              <div class="cost-row">
+                <div class="cost-info">
+                  <div class="dash-icon"><i class="fa-solid fa-globe"></i></div>
+                  <div class="cost-label">ڈومین</div>
+                </div>
+                <div class="cost-value-tag tag-paid">3000 پہلا سال</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 9 Database Capacity -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 50px; font-size: 2.5rem !important"
+            >
+              ڈیٹابیس کی گنجائش (Database Capacity)
+            </h1>
+
+            <div class="capacity-grid">
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fa-solid fa-hard-drive"></i>
+                </div>
+                <div class="metric-value">10 GB</div>
+                <div class="metric-label">کل اسٹوریج</div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <div class="metric-value">50k</div>
+                <div class="metric-label">روزانہ ریڈ (Daily Reads)</div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div class="metric-value">20k</div>
+                <div class="metric-label">روزانہ رائٹ (Daily Writes)</div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <div class="metric-value">10 GB</div>
+                <div class="metric-label">ماہانہ بینڈوڈتھ</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 10 Upcoming Features -->
+          <div class="slide urdu-slide">
+            <h1
+              class="urdu-title"
+              style="margin-bottom: 50px; font-size: 2.5rem !important"
+            >
+              آنے والے فیچر (Upcoming Features)
+            </h1>
+
+            <div class="roadmap-grid">
+              <div class="roadmap-card">
+                <div class="roadmap-icon">
+                  <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="roadmap-title">
+                  ایڈ ٹو فیورٹ بکس (ریڈر ڈیش بورڈ)
+                </div>
+              </div>
+
+              <div class="roadmap-card">
+                <div class="roadmap-icon">
+                  <i class="fa-solid fa-id-card-clip"></i>
+                </div>
+                <div class="roadmap-title">ایشوڈ بکس فیچر (ریڈر ڈیش بورڈ)</div>
+              </div>
+
+              <div class="roadmap-card">
+                <div class="roadmap-icon">
+                  <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <div class="roadmap-title">ایڈٹ ریڈر پروفائل</div>
+              </div>
+
+              <div class="roadmap-card">
+                <div class="roadmap-icon">
+                  <i class="fa-solid fa-circle-dot"></i>
+                </div>
+                <div class="roadmap-title">آن لائن / آف لائن انڈیکیٹر</div>
+              </div>
+
+              <div class="roadmap-card">
+                <div class="roadmap-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="roadmap-title">ٹو سٹیپ ویری فیکیشن</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 11 Thank You Re-Design -->
+          <div class="slide urdu-slide">
+            <div class="thank-you-card">
+              <!-- Left Side: Identity -->
+              <div class="id-section">
+                <img
+                  src="/assets/umarsPic.png"
+                  alt="Muhammad Umar"
+                  class="profile-img-new"
+                />
+                <div class="author-info-new">
+                  <div class="author-name-new">Muhammad Umar</div>
+                  <div class="author-title-new">Developer & Designer</div>
+                </div>
+              </div>
+
+              <!-- Right Side: Contact & Gratitude -->
+              <div
+                class="text-section"
+                dir="ltr"
+                style="
+                  text-align: left;
+                  border-right: none;
+                  border-left: 2px solid rgba(73, 103, 125, 0.1);
+                  padding-right: 0;
+                  padding-left: 50px;
+                "
+              >
+                <div class="thanks-en">Thank You</div>
+                <div class="qa-en">Any Questions?</div>
+
+                <div class="contact-icons">
+                  <a href="mailto:umardev92@gmail.com" class="contact-btn"
+                    ><i class="fa-solid fa-envelope"></i
+                  ></a>
+                  <a href="#" class="contact-btn"
+                    ><i class="fa-brands fa-linkedin-in"></i
+                  ></a>
+                  <a href="https://github.com/Umar-Raza" class="contact-btn"
+                    ><i class="fa-brands fa-github"></i
+                  ></a>
+                  <a href="https://mu-portfolio.web.app/" class="contact-btn"
+                    ><i class="fa-solid fa-earth-americas"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div id="progressBar"></div>
+        </div>
+
+        <!-- Dynamic Slide Counter -->
+        <div id="slideCounter">01 / 11</div>
+      </div>
+
+      <!-- Controls Container (Outside Wrapper) -->
+      <div class="controls-container">
+        <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+
+        <div class="dots-container" id="dotsContainer">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+          <div class="dot" data-index="3"></div>
+          <div class="dot" data-index="4"></div>
+          <div class="dot" data-index="5"></div>
+          <div class="dot" data-index="6"></div>
+          <div class="dot" data-index="7"></div>
+          <div class="dot" data-index="8"></div>
+          <div class="dot" data-index="9"></div>
+          <div class="dot" data-index="10"></div>
+        </div>
+
+        <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+      </div>
+    </div>
+
+    <script>
+      const track = document.getElementById("track");
+      const slides = document.querySelectorAll(".slide");
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
+      const dots = document.querySelectorAll(".dot");
+      const slideCounter = document.getElementById("slideCounter");
+      const progressBar = document.getElementById("progressBar");
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateCarousel() {
+        // Move the track
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Update dots
+        dots.forEach((dot) => dot.classList.remove("active"));
+        dots[currentIndex].classList.add("active");
+
+        // Update Slide Counter
+        const slideNum = (currentIndex + 1).toString().padStart(2, "0");
+        const totalNum = totalSlides.toString().padStart(2, "0");
+        slideCounter.innerText = `${slideNum} / ${totalNum}`;
+
+        // Update Progress Bar
+        const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++;
+          updateCarousel();
+        } else {
+          // Shake effect at the end
+          const wrapper = document.querySelector(".carousel-wrapper");
+          wrapper.classList.remove("shake-limit");
+          void wrapper.offsetWidth; // Trigger reflow
+          wrapper.classList.add("shake-limit");
+          setTimeout(() => wrapper.classList.remove("shake-limit"), 400);
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        } else {
+          // Optional: Shake at the beginning too
+          const wrapper = document.querySelector(".carousel-wrapper");
+          wrapper.classList.remove("shake-limit");
+          void wrapper.offsetWidth; // Trigger reflow
+          wrapper.classList.add("shake-limit");
+          setTimeout(() => wrapper.classList.remove("shake-limit"), 400);
+        }
+      });
+
+      // Clickable dots
+      dots.forEach((dot) => {
+        dot.addEventListener("click", (e) => {
+          currentIndex = parseInt(e.target.getAttribute("data-index"));
+          updateCarousel();
+        });
+      });
+
+      // Optional: Auto-play functionality (uncomment if you want it to slide automatically)
+      // setInterval(() => {
+      //     currentIndex = (currentIndex === totalSlides - 1) ? 0 : currentIndex + 1;
+      //     updateCarousel();
+      // }, 5000); // Changes slide every 5 seconds
+
+      // Keyboard navigation Support
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          nextBtn.click();
+        } else if (e.key === "ArrowLeft") {
+          prevBtn.click();
+        }
+      });
+    </script>
+  </body>
+</html>
