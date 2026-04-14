@@ -1,0 +1,1717 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gulzar&family=Noto+Kufi+Arabic:wght@100..900&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Nastaliq+Urdu:wght@400..700&family=Reem+Kufi:wght@400..700&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(-45deg, #1a2630, #2b3e4c, #49677d, #354f60);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 95%;
+  max-width: 1400px;
+  height: 80vh;
+  min-height: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background: #fff;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #edfbff 0%, #d5eef5 100%);
+  color: #49677d;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  overflow-x: hidden;
+}
+
+.slide h1 {
+  font-size: 3rem;
+  margin: 0 0 15px 0;
+  font-weight: 800;
+}
+
+.slide p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  font-weight: 300;
+}
+
+.header-arabic {
+  font-family: "Amiri Quran", serif;
+  font-size: 1.8rem;
+  margin-bottom: auto;
+  padding-top: 10px;
+  line-height: 2;
+  direction: rtl;
+}
+
+.slide-content {
+  margin-bottom: auto;
+}
+
+.slide-footer {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: auto;
+  opacity: 0.9;
+}
+
+.urdu-slide {
+  direction: rtl;
+}
+
+.urdu-title {
+  font-family: "Noto Nastaliq Urdu", serif !important;
+  font-size: 2.2rem !important;
+  margin-bottom: 20px !important;
+  font-weight: 700;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 20px 15px;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  color: #49677d;
+  box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  text-shadow: none;
+}
+
+.feature-icon {
+  background: linear-gradient(135deg, #49677d, #2b3e4c);
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.visit-btn {
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ff416c;
+  background: #ffffff;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.visit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  background: #f8f8f8;
+}
+
+/* Controls Container (Outside Carousel) */
+.controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  z-index: 10;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-btn:hover {
+  background: white;
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* Indicators / Dots */
+.dots-container {
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.3);
+}
+
+/* Slide 3 Circle Pie Chart */
+.cycle-diagram-pie {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cycle-text-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-110px)
+    rotate(calc(-1 * var(--angle)));
+  color: white;
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.5rem;
+  z-index: 10;
+  direction: rtl;
+  pointer-events: none;
+  white-space: nowrap;
+  text-shadow: none !important;
+}
+
+.animated-arrows {
+  transform-origin: 100px 100px;
+  animation: spin-arrows 20s linear infinite;
+}
+
+@keyframes spin-arrows {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slide 4 Horizontal Stepper */
+.stepper-horizontal {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  direction: rtl;
+  position: relative;
+}
+
+.stepper-horizontal::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  /* Aligns with middle of the 60px circle */
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: rgba(74, 106, 208, 0.15);
+  z-index: 0;
+}
+
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  color: #5a75cf;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(90, 117, 207, 0.15);
+  margin-bottom: 25px;
+  border: 2px solid #5a75cf;
+  transition: all 0.3s ease;
+}
+
+.stepper-item:hover .step-circle {
+  background: #5a75cf;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(90, 117, 207, 0.3);
+}
+
+.step-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff416c;
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+
+.step-desc {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.15rem;
+  color: #4a5c6b;
+  line-height: 1.8;
+  padding: 0 10px;
+  text-shadow: none;
+}
+
+/* Slide 5 Search Grid Options */
+.search-options-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+.search-grid-item {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 25px 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.search-grid-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+}
+
+.opt-grid-icon {
+  width: 55px;
+  height: 55px;
+  background: linear-gradient(135deg, #49677d, #2b3e4c);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.search-grid-item:hover .opt-grid-icon {
+  transform: scale(1.1);
+}
+
+.opt-grid-text {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.1rem;
+  color: #49677d;
+  line-height: 1.8;
+}
+
+/* Slide 6 Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  direction: rtl;
+}
+
+.dash-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.dash-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(73, 103, 125, 0.12);
+}
+
+.dash-cat {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.65rem;
+  background: #49677d;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dash-icon {
+  background: linear-gradient(135deg, #49677d, #2b3e4c);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 10px rgba(73, 103, 125, 0.2);
+}
+
+.dash-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2b3e4c;
+  margin: 2px 0;
+}
+
+.dash-desc {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 0.8rem;
+  color: #49677d;
+  line-height: 1.4;
+}
+
+@media (max-width: 1000px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slide 7 Security Grid */
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  direction: rtl;
+}
+
+.sec-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 20px rgba(73, 103, 125, 0.06);
+}
+
+.sec-card:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(73, 103, 125, 0.15);
+}
+
+.sec-icon {
+  background: linear-gradient(135deg, #49677d, #2b3e4c);
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(73, 103, 125, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.sec-card:hover .sec-icon {
+  transform: rotate(360deg);
+}
+
+.sec-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2b3e4c;
+}
+
+.sec-desc {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 0.75rem;
+  color: #49677d;
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .security-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slide 8 Cost Professional Redesign */
+.cost-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+.cost-row {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.cost-row:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 25px rgba(73, 103, 125, 0.1);
+}
+
+.cost-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cost-label {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.3rem;
+  color: #2b3e4c;
+  font-weight: 700;
+}
+
+.cost-value-tag {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.2rem;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tag-free {
+  background: rgba(46, 125, 50, 0.1);
+  color: #2e7d32;
+  border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.tag-paid {
+  background: rgba(211, 47, 47, 0.1);
+  color: #d32f2f;
+  border: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+/* Slide 9 Database Capacity Grid */
+.capacity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+.metric-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 25px rgba(73, 103, 125, 0.05);
+}
+
+.metric-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 15px 35px rgba(73, 103, 125, 0.12);
+}
+
+.metric-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #49677d, #2b3e4c);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.22rem;
+  box-shadow: 0 5px 15px rgba(73, 103, 125, 0.2);
+}
+
+.metric-value {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2b3e4c;
+}
+
+.metric-label {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.15rem;
+  color: #49677d;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .capacity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slide 10 Roadmap Features */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+.roadmap-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.roadmap-card::after {
+  content: "COMING SOON";
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  background: #ff416c;
+  color: white;
+  font-size: 0.6rem;
+  font-family: "Poppins", sans-serif;
+  padding: 4px 40px;
+  transform: rotate(45deg);
+  font-weight: 700;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #ff416c;
+}
+
+.roadmap-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+}
+
+.roadmap-title {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-size: 1.25rem;
+  color: #2b3e4c;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .roadmap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Slide 11 Re-Design: Split Card Layout */
+.thank-you-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 50px rgba(73, 103, 125, 0.15);
+  direction: rtl;
+}
+
+.id-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.text-section {
+  flex: 1.5;
+  text-align: right;
+  border-right: 2px solid rgba(73, 103, 125, 0.1);
+  padding-right: 50px;
+}
+
+.profile-img-new {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  border: 4px solid white;
+  object-fit: cover;
+  object-position: top;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transform: rotate(-2deg);
+  transition: all 0.5s ease;
+}
+
+.thank-you-card:hover .profile-img-new {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.thanks-en {
+  font-family: "Poppins", sans-serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #2b3e4c;
+  margin-bottom: 0px;
+  line-height: 1;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #2b3e4c, #49677d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.qa-en {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  color: #49677d;
+  margin-bottom: 30px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.author-info-new {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.author-name-new {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #2b3e4c;
+  line-height: 1;
+}
+
+.author-title-new {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #49677d;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.contact-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  justify-content: flex-start;
+}
+
+.contact-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(73, 103, 125, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b3e4c;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.contact-btn:hover {
+  background: #2b3e4c;
+  color: white;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .thank-you-card {
+    flex-direction: column;
+    padding: 30px;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .text-section {
+    border-right: none;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .contact-icons {
+    justify-content: center;
+  }
+}
+
+#slideCounter {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  font-family: "Poppins", sanss-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: rgba(67, 103, 129, 0.4);
+  letter-spacing: 2px;
+  z-index: 200;
+  pointer-events: none;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 15px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Dynamic Progress Bar */
+.progress-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #dfe9f3 0%, #ffffff 100%);
+  z-index: 2000;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#progressBar {
+  height: 100%;
+  width: 9.09%;
+  background: linear-gradient(90deg, #2b3e4c, #49677d, #2b3e4c);
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(43, 62, 76, 0.3);
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Shake Animation for Boundary */
+@keyframes slideShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(10px);
+  }
+
+  75% {
+    transform: translateX(-10px);
+  }
+}
+
+.shake-limit {
+  animation: slideShake 0.4s ease-in-out;
+}
+
+/* =============================================================
+   RESPONSIVE — Tablet (≤ 768px)
+   ============================================================= */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 10px 0;
+  }
+
+  .main-container {
+    gap: 12px;
+    padding: 0 0 10px;
+  }
+
+  .carousel-wrapper {
+    width: 98%;
+    height: 82vh;
+    min-height: 420px;
+    border-radius: 16px;
+  }
+
+  .slide {
+    padding: 30px 16px;
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+
+  /* Slide 1 */
+  .header-arabic {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding-top: 5px;
+  }
+
+  .slide h1 {
+    font-size: 2rem;
+  }
+
+  .slide p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  /* Urdu titles */
+  .urdu-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Slide 2 — Features */
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  .feature-card {
+    padding: 12px 8px;
+    font-size: 0.85rem;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  /* Slide 3 — Cycle diagram */
+  .cycle-diagram-pie {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+  }
+
+  .cycle-text-node {
+    font-size: 1.1rem;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-85px)
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  /* Slide 4 — Stepper: go vertical */
+  .stepper-horizontal {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+  }
+
+  .stepper-horizontal::before {
+    display: none;
+  }
+
+  .stepper-item {
+    width: 100%;
+  }
+
+  .step-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .step-title {
+    font-size: 1.1rem;
+  }
+
+  .step-desc {
+    font-size: 0.9rem;
+  }
+
+  /* Slide 5 — Search options: wrap */
+  .search-options-grid {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search-grid-item {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 140px;
+    padding: 15px 10px;
+  }
+
+  .opt-grid-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .opt-grid-text {
+    font-size: 0.85rem;
+  }
+
+  /* Slide 6 — Dashboard: already 2-col at 1000px, reduce further */
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 6px;
+  }
+
+  .dash-card {
+    padding: 10px 8px;
+  }
+
+  .dash-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .dash-title {
+    font-size: 0.8rem;
+  }
+
+  .dash-desc {
+    font-size: 0.7rem;
+  }
+
+  /* Slide 7 — Security: 2-col with overflow fix */
+  .security-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 0 6px;
+    box-sizing: border-box;
+  }
+
+  .sec-title {
+    font-size: 0.72rem;
+    word-break: break-word;
+  }
+
+  .sec-desc {
+    font-size: 0.62rem;
+    word-break: break-word;
+  }
+
+  /* Slide 8 — Cost rows */
+  .cost-list {
+    gap: 10px;
+  }
+
+  .cost-row {
+    padding: 10px 15px;
+    gap: 8px;
+  }
+
+  .cost-label {
+    font-size: 1rem;
+  }
+
+  .cost-value-tag {
+    font-size: 0.9rem;
+    padding: 4px 12px;
+  }
+
+  /* Slide 9 — Capacity: already 2-col at 800px */
+  .capacity-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 18px 12px;
+    gap: 10px;
+  }
+
+  .metric-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .metric-value {
+    font-size: 1.4rem;
+  }
+
+  .metric-label {
+    font-size: 0.9rem;
+  }
+
+  /* Slide 10 — Roadmap: already 2-col at 900px */
+  .roadmap-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .roadmap-card {
+    padding: 25px 12px;
+    gap: 10px;
+  }
+
+  .roadmap-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .roadmap-title {
+    font-size: 1rem;
+  }
+
+  /* Slide 11 — Thank you card */
+  .thank-you-card {
+    flex-direction: column;
+    padding: 25px 18px;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .text-section {
+    border-right: none !important;
+    border-left: none !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    text-align: center !important;
+  }
+
+  .contact-icons {
+    justify-content: center;
+  }
+
+  .thanks-en {
+    font-size: 3rem;
+  }
+
+  .qa-en {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .author-name-new {
+    font-size: 1.8rem;
+  }
+
+  .profile-img-new {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+  }
+
+  /* Controls */
+  .controls-container {
+    gap: 20px;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dots-container {
+    gap: 8px;
+  }
+
+  #slideCounter {
+    font-size: 0.7rem;
+    bottom: 12px;
+    right: 14px;
+    padding: 3px 10px;
+  }
+}
+
+/* =============================================================
+   RESPONSIVE — Mobile (≤ 480px)
+   ============================================================= */
+@media (max-width: 480px) {
+  .carousel-wrapper {
+    width: 100%;
+    border-radius: 0;
+    height: 84vh;
+    min-height: 380px;
+  }
+
+  .slide {
+    padding: 25px 12px;
+    padding-top: 35px;
+  }
+
+  .header-arabic {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .slide h1 {
+    font-size: 1.6rem;
+  }
+
+  .urdu-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Slide 2 — Features: 2-col */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 4px;
+  }
+
+  .feature-card {
+    padding: 10px 6px;
+    font-size: 0.75rem;
+    gap: 6px;
+    border-radius: 12px;
+  }
+
+  .feature-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  /* Slide 3 — Cycle */
+  .cycle-diagram-pie {
+    width: 230px;
+    height: 230px;
+  }
+
+  .cycle-text-node {
+    font-size: 0.85rem;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-65px)
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  /* Slide 4 — Stepper */
+  .step-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .step-title {
+    font-size: 0.95rem;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* Slide 5 — Search: single column */
+  .search-grid-item {
+    flex: 1 1 100%;
+    padding: 12px 8px;
+  }
+
+  .opt-grid-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .opt-grid-text {
+    font-size: 0.8rem;
+  }
+
+  /* Slide 6 — Dashboard */
+  .dashboard-grid {
+    gap: 6px;
+    padding: 0 4px;
+  }
+
+  .dash-card {
+    padding: 8px 5px;
+    gap: 4px;
+  }
+
+  .dash-cat {
+    font-size: 0.5rem;
+    padding: 1px 6px;
+  }
+
+  .dash-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .dash-title {
+    font-size: 0.72rem;
+  }
+
+  .dash-desc {
+    font-size: 0.62rem;
+  }
+
+  /* Slide 7 — Security */
+  .security-grid {
+    gap: 5px;
+  }
+
+  .sec-card {
+    padding: 8px 5px;
+    gap: 3px;
+  }
+
+  .sec-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .sec-title {
+    font-size: 0.7rem;
+  }
+
+  .sec-desc {
+    font-size: 0.6rem;
+  }
+
+  /* Slide 8 — Cost */
+  .cost-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+    padding: 10px 12px;
+  }
+
+  .cost-info {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .cost-label {
+    font-size: 0.9rem;
+  }
+
+  .cost-value-tag {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+  }
+
+  /* Slide 9 — Capacity */
+  .metric-card {
+    padding: 14px 8px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .metric-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .metric-value {
+    font-size: 1.2rem;
+  }
+
+  .metric-label {
+    font-size: 0.8rem;
+  }
+
+  /* Slide 10 — Roadmap */
+  .roadmap-grid {
+    gap: 8px;
+  }
+
+  .roadmap-card {
+    padding: 18px 10px;
+    gap: 8px;
+  }
+
+  .roadmap-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .roadmap-title {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .roadmap-card::after {
+    font-size: 0.45rem;
+    padding: 2px 30px;
+    top: 10px;
+    right: -30px;
+  }
+
+  /* Slide 11 — Thank you */
+  .thank-you-card {
+    padding: 20px 14px;
+    gap: 15px;
+  }
+
+  .thanks-en {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+  }
+
+  .qa-en {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .author-name-new {
+    font-size: 1.4rem;
+  }
+
+  .author-title-new {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .profile-img-new {
+    width: 110px;
+    height: 110px;
+    border-radius: 14px;
+  }
+
+  .contact-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  /* Controls */
+  .controls-container {
+    gap: 12px;
+  }
+
+  .nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dots-container {
+    gap: 6px;
+  }
+
+  #slideCounter {
+    font-size: 0.6rem;
+    bottom: 8px;
+    right: 10px;
+    padding: 2px 8px;
+  }
+}
+
+/* =============================================================
+   RESPONSIVE — Small Phone (≤ 360px)
+   ============================================================= */
+@media (max-width: 360px) {
+  .slide {
+    padding: 20px 10px;
+    padding-top: 30px;
+  }
+
+  .slide h1 {
+    font-size: 1.3rem;
+  }
+
+  .urdu-title {
+    font-size: 1.1rem !important;
+  }
+
+  .header-arabic {
+    font-size: 0.8rem;
+  }
+
+  .features-grid {
+    gap: 6px;
+  }
+
+  .feature-card {
+    font-size: 0.68rem;
+    padding: 8px 5px;
+  }
+
+  .feature-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .cycle-diagram-pie {
+    width: 190px;
+    height: 190px;
+  }
+
+  .cycle-text-node {
+    font-size: 0.7rem;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-54px)
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .stepper-horizontal {
+    max-width: 280px;
+  }
+
+  .thanks-en {
+    font-size: 1.8rem;
+  }
+
+  .author-name-new {
+    font-size: 1.1rem;
+  }
+
+  .profile-img-new {
+    width: 90px;
+    height: 90px;
+  }
+
+  .nav-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    border-width: 1.5px;
+  }
+
+  .controls-container {
+    gap: 10px;
+  }
+}
+
+/* =============================================================
+   RESPONSIVE — Landscape Phone
+   ============================================================= */
+@media (max-height: 500px) and (orientation: landscape) {
+  .carousel-wrapper {
+    height: 90vh;
+    min-height: 300px;
+  }
+
+  .slide {
+    padding: 15px 20px;
+    padding-top: 25px;
+  }
+
+  .main-container {
+    gap: 8px;
+  }
+
+  .controls-container {
+    gap: 15px;
+  }
+
+  .cycle-diagram-pie {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cycle-text-node {
+    font-size: 0.75rem;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-58px)
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .thank-you-card {
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .profile-img-new {
+    width: 100px;
+    height: 100px;
+  }
+
+  .thanks-en {
+    font-size: 2rem;
+  }
+}
